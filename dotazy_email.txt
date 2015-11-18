@@ -1,0 +1,51 @@
+Ahoj Pavle,
+
+?íslice ne?eš. ?eš jen jednoduché mapování 1:1. Není pot?eba vytvá?et super komplikované algoritmy. P?evádíš jedno písmenko v jedné reprezentace na druhou reprezentaci, která je i reverzní. Typicky morzeovka, kterou  máš implementovat (E <-> .). Nic víc ne?eš a nekomplikuj si to. Výb?r je myšleno ud?lat možnost dynamicky p?idat implementaci, která se na?te p?i spušt?ní. Potenciáln? jsem tuto ?ást jsem ochotný toto oželet;).
+
+Petr
+
+
+From: Pavel Gloss [mailto:pavel.gloss@post.cz]
+Sent: 17. listopadu 2015 20:46
+To: Martinák Petr <Petr.Martinak@ysoft.com>
+Subject: Re: Zadání p?íkladu
+
+Ahoj Pet?e,
+za?al jsem pracovat na úloze a mám pár otázek po analýze zadání.
+
+1) ?íslice asi ?ešit nechceme, nejsou sou?ástí abecedy.
+
+2) Ne každá abeceda umožní p?evod na jinou a zp?t.
+Nap?. "transkriptce" z latinky na azbuku jde, ale zp?t to nedává moc smysl.
+Navíc implementací dané transkripce m?že být více.
+P?evod znaku ? v cyrilici do ?eské abecedy "ž" versus do anglické abecedy (latinky) jako "zh".
+Viz p?íloha.
+V p?ípad? azbuka-latinka, chceme umožnit p?evod z azbuky do latinky?
+P?ikláním se pouze k jednostranné konverzi (transkripci).
+
+3a) V p?ípad? reprezentace znaku jedné abecedy do latinky použitím více znak?, op?t p?íklad p?evod z azbuky do latinky.
+Znak v azbuce, který se ?te jako "JA", je reprezentovaný v jedné z možných transkripcí do latinky jako ?et?zec "ja".
+Zp?tný p?evod (viz bod ?. 2) by znamenal nejednozna?nost p?i p?evodu, protože (bez znalosti kontextu, pouhým lexikálním p?evodem)
+m?žeme z latinky text "ja" p?evést (ikdyž viz bod 2 to asi nedává smysl) bu? zpátky na ten jeden ruský znak JA anebo na dva ruské znaky (protože "j" a "a" jsou latinkou reprezentované jiné dva znaky azbuky). Problém se vy?eší nepovolením zp?tné konverze.
+
+3b)
+Podobná nejednozna?nost "p?i parsování" pak je u morseovky, která se ale ?eší d?sledným odd?lováním "morseovkových znak?". Nap?íklad mezerou. Proto ve vstupním textu budou sekvence odd?leny.
+
+4) Chceme se pravd?podobn? zabývat jen textovými abecedami,
+obrázkovou reprezentaci hieroglif? nebudeme ?ešit.
+
+5) V Braillovu písmu je N symbol?m (resp. práv? dv?ma) p?i?azen práv? jeden znak v latince.
+P?íklad znak "a" i ?íslice "1" mají stejný Braill?v symbol.
+Tím se asi nechceme zabývat, za p?edpokladu že v bod? 1 jsme vylou?ili ?íslice,
+pak definice konverze nebude obsahovat ?íslice a tím zmizí nejednozna?nost p?i?azení.
+
+6) Moc nerozumím bodu "Allow user to select one of available alphabets transformation algorithm". Pro morseovku jsem našel možnost reprezentace binárním stromem, anebo klasicky p?evodní tabulkou. Stromová reprezentrace však nemá význam pro p?evod "do morseovky" a tabulková zase "z morseovky".
+Umožníme uživateli použít stromový algoritmus pro p?evod do morseovky?
+
+Suma:
+Jestli tedy dob?e chápu zadání, tak se hlavn? zam??ím na možnost definovat konverzi z abecedy A do abecedy B p?evodními tabulkami. U n?kterých abeced i obrácenou konverzi tabulkovým p?evodem z B do A. Plus navíc u morseovky se dá naimplementovat optimáln?jší p?evod pomocí stromu.
+
+
+Díky za p?ípadné odpov?di, ?i tipy.
+Hezký ve?er,
+Pavel
