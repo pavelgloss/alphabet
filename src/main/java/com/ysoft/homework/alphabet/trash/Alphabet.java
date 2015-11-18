@@ -1,9 +1,7 @@
-package com.ysoft.homework.alphabet;
+package com.ysoft.homework.alphabet.trash;
 
 
 import com.ysoft.homework.alphabet.symbols.Symbol;
-
-import java.util.Collection;
 
 public abstract class Alphabet<SYMBOL extends Symbol> {
     //protected Collection<SYMBOL> symbols;

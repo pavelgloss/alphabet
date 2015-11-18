@@ -1,4 +1,4 @@
-package com.ysoft.homework.alphabet;
+package com.ysoft.homework.alphabet.trash;
 
 import com.ysoft.homework.alphabet.symbols.CharSymbol;
 
