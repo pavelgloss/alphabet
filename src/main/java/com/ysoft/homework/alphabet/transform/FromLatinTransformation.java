@@ -6,11 +6,8 @@ import com.ysoft.homework.alphabet.symbols.Symbol;
 
 public interface FromLatinTransformation<T extends Symbol> {
 
-
     TextRepresentation<T> fromLatin(LatinText latinText);
 
     LatinText toLatin(TextRepresentation<T> input);
-
-
 
 }

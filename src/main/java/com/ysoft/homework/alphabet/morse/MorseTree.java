@@ -2,9 +2,8 @@ package com.ysoft.homework.alphabet.morse;
 
 public class MorseTree {
 
-
     public String searchTree(MorseNode current, char ltr, String s) {
-        char temp = current.getLetter();  //for debugging purposes
+        char temp = current.getLetter(); // for debugging purposes
 
         if (current.getLetter() == ltr) {
             return s;

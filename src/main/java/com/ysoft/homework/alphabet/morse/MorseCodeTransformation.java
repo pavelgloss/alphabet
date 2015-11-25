@@ -1,5 +1,9 @@
 package com.ysoft.homework.alphabet.morse;
 
+import java.util.Map;
+
+import javax.annotation.concurrent.NotThreadSafe;
+
 import com.ysoft.homework.alphabet.LatinText;
 import com.ysoft.homework.alphabet.TextRepresentation;
 import com.ysoft.homework.alphabet.symbols.CharSymbol;
@@ -7,46 +11,42 @@ import com.ysoft.homework.alphabet.symbols.MorseSymbol;
 import com.ysoft.homework.alphabet.symbols.StringSymbol;
 import com.ysoft.homework.alphabet.transform.FromLatinTransformation;
 
-import javax.annotation.concurrent.NotThreadSafe;
-import java.util.Map;
-
 @NotThreadSafe
 public class MorseCodeTransformation implements FromLatinTransformation<MorseSymbol> {
     private static Map<CharSymbol, StringSymbol> latin2MorseMap;
 
     static {
-        put('A',"·-");
-        put('B',"-···");
-        put('C',"-·-·");
-        put('D',"-··");
-        put('E',"·");
-        put('F',"··-·");
-        put('G',"--·");
-        put('H',"····");
-        put('I',"··");
-        put('J',"·---");
-        put('K',"-·-");
-        put('L',"·-··");
-        put('M',"--");
-        put('N',"-·");
-        put('O',"---");
-        put('P',"·--·");
-        put('Q',"--·-");
-        put('R',"·-·");
-        put('S',"···");
-        put('T',"-");
-        put('U',"··-");
-        put('V',"···-");
-        put('W',"·--");
-        put('X',"-··-");
-        put('Y',"-·--");
-        put('Z',"--··");
+        put('A', "Â·-");
+        put('B', "-Â·Â·Â·");
+        put('C', "-Â·-Â·");
+        put('D', "-Â·Â·");
+        put('E', "Â·");
+        put('F', "Â·Â·-Â·");
+        put('G', "--Â·");
+        put('H', "Â·Â·Â·Â·");
+        put('I', "Â·Â·");
+        put('J', "Â·---");
+        put('K', "-Â·-");
+        put('L', "Â·-Â·Â·");
+        put('M', "--");
+        put('N', "-Â·");
+        put('O', "---");
+        put('P', "Â·--Â·");
+        put('Q', "--Â·-");
+        put('R', "Â·-Â·");
+        put('S', "Â·Â·Â·");
+        put('T', "-");
+        put('U', "Â·Â·-");
+        put('V', "Â·Â·Â·-");
+        put('W', "Â·--");
+        put('X', "-Â·Â·-");
+        put('Y', "-Â·--");
+        put('Z', "--Â·Â·");
     }
 
     private static void put(char latinChar, String morseSymbol) {
         latin2MorseMap.put(new CharSymbol(latinChar), new StringSymbol(morseSymbol));
     }
-
 
     public TextRepresentation<MorseSymbol> fromLatin(LatinText latinText) {
         return null;

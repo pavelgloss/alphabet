@@ -20,8 +20,10 @@ public class CharSymbol extends Symbol {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CharSymbol)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof CharSymbol))
+            return false;
         CharSymbol that = (CharSymbol) o;
         return Objects.equals(letter, that.letter);
     }

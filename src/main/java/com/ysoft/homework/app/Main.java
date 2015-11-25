@@ -8,7 +8,7 @@ public class Main {
 
         MorseCodeTransformation transformation = new MorseCodeTransformation();
 
-//        transformation.transform("sos");
-//        transformation.transform("... --- ...");
+        // transformation.transform("sos");
+        // transformation.transform("... --- ...");
     }
 }
