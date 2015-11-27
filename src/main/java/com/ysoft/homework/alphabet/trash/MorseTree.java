@@ -1,4 +1,4 @@
-package com.ysoft.homework.alphabet.morse;
+package com.ysoft.homework.alphabet.trash;
 
 public class MorseTree {
 

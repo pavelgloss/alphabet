@@ -1,6 +1,9 @@
 package com.ysoft.homework.alphabet.symbols;
 
-public class StringSymbol extends Symbol {
+import java.io.IOException;
+import java.io.Writer;
+
+public class StringSymbol extends PrintableSymbol {
     private String letterSequence;
 
     public StringSymbol(String letterSequence) {
@@ -8,8 +11,8 @@ public class StringSymbol extends Symbol {
     }
 
     @Override
-    public void print() {
-        System.out.print(letterSequence);
+    public final void print(Writer writer) throws IOException {
+        writer.write(letterSequence);
     }
 
     @Override

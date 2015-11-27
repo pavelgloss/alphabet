@@ -1,8 +1,8 @@
 package com.ysoft.homework.alphabet.trash;
 
-import com.ysoft.homework.alphabet.symbols.Symbol;
+import com.ysoft.homework.alphabet.symbols.PrintableSymbol;
 
-public abstract class Alphabet<SYMBOL extends Symbol> {
+public abstract class Alphabet<SYMBOL extends PrintableSymbol> {
     // protected Collection<SYMBOL> symbols;
 
     /** alphabet distinguishes between lower and upper case symbols (letters) */

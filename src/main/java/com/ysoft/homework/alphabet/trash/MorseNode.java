@@ -1,4 +1,4 @@
-package com.ysoft.homework.alphabet.morse;
+package com.ysoft.homework.alphabet.trash;
 
 import javax.annotation.concurrent.Immutable;
 

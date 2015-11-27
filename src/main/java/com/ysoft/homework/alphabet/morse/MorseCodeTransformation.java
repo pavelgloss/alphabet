@@ -4,8 +4,8 @@ import java.util.Map;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
-import com.ysoft.homework.alphabet.LatinText;
-import com.ysoft.homework.alphabet.TextRepresentation;
+import com.ysoft.homework.alphabet.text.LatinText;
+import com.ysoft.homework.alphabet.text.Text;
 import com.ysoft.homework.alphabet.symbols.CharSymbol;
 import com.ysoft.homework.alphabet.symbols.MorseSymbol;
 import com.ysoft.homework.alphabet.symbols.StringSymbol;
@@ -48,11 +48,11 @@ public class MorseCodeTransformation implements FromLatinTransformation<MorseSym
         latin2MorseMap.put(new CharSymbol(latinChar), new StringSymbol(morseSymbol));
     }
 
-    public TextRepresentation<MorseSymbol> fromLatin(LatinText latinText) {
+    public Text<MorseSymbol> fromLatin(LatinText latinText) {
         return null;
     }
 
-    public LatinText toLatin(TextRepresentation<MorseSymbol> input) {
+    public LatinText toLatin(Text<MorseSymbol> input) {
         return null;
     }
 }

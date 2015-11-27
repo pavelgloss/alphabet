@@ -1,8 +1,10 @@
 package com.ysoft.homework.alphabet.symbols;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.Objects;
 
-public class CharSymbol extends Symbol {
+public class CharSymbol extends PrintableSymbol {
     private final char letter;
 
     public CharSymbol(char letter) {
@@ -10,8 +12,8 @@ public class CharSymbol extends Symbol {
     }
 
     @Override
-    public void print() {
-        System.out.print(letter);
+    public void print(Writer writer) throws IOException {
+        writer.write(letter);
     }
 
     public char getLetter() {
@@ -20,10 +22,12 @@ public class CharSymbol extends Symbol {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o) {
             return true;
-        if (!(o instanceof CharSymbol))
+        }
+        if (!(o instanceof CharSymbol)) {
             return false;
+        }
         CharSymbol that = (CharSymbol) o;
         return Objects.equals(letter, that.letter);
     }
