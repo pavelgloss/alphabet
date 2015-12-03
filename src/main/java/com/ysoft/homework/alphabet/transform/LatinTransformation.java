@@ -4,10 +4,10 @@ import com.ysoft.homework.alphabet.text.LatinText;
 import com.ysoft.homework.alphabet.text.Text;
 import com.ysoft.homework.alphabet.symbols.PrintableSymbol;
 
-public interface FromLatinTransformation<T extends PrintableSymbol> {
+public interface LatinTransformation<S extends PrintableSymbol, T extends Text<S>> {
 
-    Text<T> fromLatin(LatinText latinText);
+    T fromLatin(LatinText latinText);
 
-    LatinText toLatin(Text<T> input);
+    LatinText toLatin(T input);
 
 }

@@ -1,24 +1,32 @@
 package com.ysoft.homework.alphabet.text;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.Collection;
 
+import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
+
+import com.google.common.collect.ImmutableList;
 import com.ysoft.homework.alphabet.symbols.PrintableSymbol;
 
 /**
  * Represents some written text in current alphabet.
  * @param <SYMBOL>
  */
+@Immutable
+@ThreadSafe
 public abstract class Text<SYMBOL extends PrintableSymbol> {
 
-    protected Collection<SYMBOL> symbols;
+    protected final Collection<SYMBOL> symbols;
 
     public Text(Collection<SYMBOL> symbols) {
         this.symbols = symbols;
     }
 
-    public void print() {
+    public void print(Writer writer) throws IOException {
         for (SYMBOL symbol : symbols) {
-            symbol.print();
+            symbol.print(writer);
         }
     }
 
@@ -26,5 +34,9 @@ public abstract class Text<SYMBOL extends PrintableSymbol> {
      * null value is used for no special  */
     public SYMBOL getDelimiter() {
         return null;
+    }
+
+    public Collection<SYMBOL> getSymbols() {
+        return ImmutableList.copyOf(symbols);
     }
 }
