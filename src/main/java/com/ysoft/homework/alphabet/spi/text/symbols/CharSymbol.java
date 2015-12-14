@@ -1,4 +1,4 @@
-package com.ysoft.homework.alphabet.symbols;
+package com.ysoft.homework.alphabet.spi.text.symbols;
 
 import java.io.IOException;
 import java.io.Writer;

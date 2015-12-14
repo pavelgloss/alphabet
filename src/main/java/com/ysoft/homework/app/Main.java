@@ -1,6 +1,6 @@
 package com.ysoft.homework.app;
 
-import com.ysoft.homework.alphabet.morse.MorseCodeTransformation;
+import com.ysoft.homework.alphabet.morse.transform.MorseCodeTransformation;
 
 public class Main {
 

@@ -1,19 +1,18 @@
-package com.ysoft.homework.alphabet.morse;
+package com.ysoft.homework.alphabet.morse.transform;
 
 import java.util.Map;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
 import com.ysoft.homework.alphabet.morse.text.MorseCodeText;
-import com.ysoft.homework.alphabet.symbols.CharSymbol;
-import com.ysoft.homework.alphabet.symbols.MorseSymbol;
-import com.ysoft.homework.alphabet.symbols.StringSymbol;
-import com.ysoft.homework.alphabet.text.LatinText;
-import com.ysoft.homework.alphabet.transform.LatinTransformation;
+import com.ysoft.homework.alphabet.morse.text.symbols.MorseSymbol;
+import com.ysoft.homework.alphabet.spi.text.symbols.CharSymbol;
+import com.ysoft.homework.alphabet.latin.text.LatinText;
+import com.ysoft.homework.alphabet.spi.transform.LatinTransformation;
 
 @NotThreadSafe
-public class MorseCodeTransformation implements LatinTransformation<MorseSymbol, MorseCodeText> {
-    private static Map<CharSymbol, StringSymbol> latin2MorseMap;
+public class MorseCodeTransformation implements LatinTransformation<MorseCodeText> {
+    private static Map<CharSymbol, MorseSymbol> latin2MorseMap;
 
     static {
         put('A', "·-");
@@ -45,7 +44,7 @@ public class MorseCodeTransformation implements LatinTransformation<MorseSymbol,
     }
 
     private static void put(char latinChar, String morseSymbol) {
-        latin2MorseMap.put(new CharSymbol(latinChar), new StringSymbol(morseSymbol));
+        latin2MorseMap.put(new CharSymbol(latinChar), new MorseSymbol(morseSymbol));
     }
 
     public MorseCodeText fromLatin(LatinText latinText) {

@@ -1,21 +1,19 @@
-package com.ysoft.homework.alphabet.text;
+package com.ysoft.homework.alphabet.spi.text;
 
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Collection;
 
 import javax.annotation.concurrent.Immutable;
-import javax.annotation.concurrent.ThreadSafe;
 
 import com.google.common.collect.ImmutableList;
-import com.ysoft.homework.alphabet.symbols.PrintableSymbol;
+import com.ysoft.homework.alphabet.spi.text.symbols.PrintableSymbol;
 
 /**
  * Represents some written text in current alphabet.
  * @param <SYMBOL>
  */
 @Immutable
-@ThreadSafe
 public abstract class Text<SYMBOL extends PrintableSymbol> {
 
     protected final Collection<SYMBOL> symbols;

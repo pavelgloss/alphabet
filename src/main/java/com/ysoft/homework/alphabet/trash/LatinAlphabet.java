@@ -1,6 +1,6 @@
 package com.ysoft.homework.alphabet.trash;
 
-import com.ysoft.homework.alphabet.symbols.CharSymbol;
+import com.ysoft.homework.alphabet.spi.text.symbols.CharSymbol;
 
 public class LatinAlphabet extends Alphabet<CharSymbol> {
 
