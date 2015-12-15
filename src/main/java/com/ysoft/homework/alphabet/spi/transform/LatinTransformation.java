@@ -5,8 +5,8 @@ import com.ysoft.homework.alphabet.spi.text.Text;
 
 public interface LatinTransformation<T extends Text> {
 
-    T fromLatin(LatinText latinText);
+    T fromLatin(LatinText latinText) throws TransformationException;
 
-    LatinText toLatin(T input);
+    LatinText toLatin(T inputText) throws TransformationException;
 
 }

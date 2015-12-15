@@ -1,9 +1,9 @@
 package com.ysoft.homework.alphabet.spi.text;
 
-import com.ysoft.homework.alphabet.spi.text.symbols.PrintableSymbol;
-
 import java.io.IOException;
 import java.io.Reader;
+
+import com.ysoft.homework.alphabet.spi.text.symbols.PrintableSymbol;
 
 public interface SymbolsReader<S extends PrintableSymbol> {
 

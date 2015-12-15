@@ -1,17 +1,18 @@
 package com.ysoft.homework.alphabet.latin.text;
 
-import com.google.common.io.CharStreams;
-import com.ysoft.homework.alphabet.spi.text.symbols.CharSymbol;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.google.common.io.CharStreams;
+import com.ysoft.homework.alphabet.spi.text.symbols.CharSymbol;
+import com.ysoft.homework.alphabet.spi.text.symbols.IllegalSymbolException;
+
 /**
  * This implementation reads latin characters and capitalize them.
- * Ignore all non-latin characters.
+ * If non-latin character is read, then IllegalSymbolException is thrown.
  */
 public class LatinCapitalsReader implements LatinTextReader {
 
@@ -22,7 +23,13 @@ public class LatinCapitalsReader implements LatinTextReader {
         return new LatinText(charSymbols);
     }
 
-    private static Collection<CharSymbol> fromString(String text) {
+    /**
+     * Converts input latin text in string.
+     * @param text
+     * @return capitalized latin text as CharSymbol collection
+     * @throws IllegalSymbolException
+     */
+    public static Collection<CharSymbol> fromString(String text) throws IllegalSymbolException {
         String capitalized = text.toUpperCase();
         List<CharSymbol> symbols = new ArrayList<>(text.length());
 
@@ -30,8 +37,9 @@ public class LatinCapitalsReader implements LatinTextReader {
             char capital = capitalized.charAt(i);
             if (capital >= 'A' && capital <= 'Z') {
                 symbols.add(new CharSymbol(capital));
+            } else {
+                throw new IllegalSymbolException(Character.toString(capital));
             }
-            // ignore non-letters
         }
 
         return symbols;

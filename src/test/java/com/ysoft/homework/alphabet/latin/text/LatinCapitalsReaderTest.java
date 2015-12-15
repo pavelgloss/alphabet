@@ -1,17 +1,16 @@
 package com.ysoft.homework.alphabet.latin.text;
 
-import com.ysoft.homework.alphabet.latin.text.LatinCapitalsReader;
-import com.ysoft.homework.alphabet.latin.text.LatinText;
-import com.ysoft.homework.alphabet.latin.text.LatinTextReader;
-import com.ysoft.homework.alphabet.spi.text.symbols.CharSymbol;
-import org.junit.Before;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.ysoft.homework.alphabet.spi.text.symbols.CharSymbol;
+import com.ysoft.homework.alphabet.spi.text.symbols.IllegalSymbolException;
 
 public class LatinCapitalsReaderTest {
     private LatinTextReader reader;
@@ -24,25 +23,22 @@ public class LatinCapitalsReaderTest {
     @Test
     public void whenEmpty() throws IOException {
         Reader r = new StringReader("");
-        LatinText text = (LatinText) reader.read(r);
+        LatinText text = reader.read(r);
 
         assertThat(text.getSymbols()).containsExactly();
     }
 
     @Test
     public void whenSmall() throws IOException {
-        Reader r = new StringReader("xl");
+        Reader r = new StringReader("xL");
         LatinText text = reader.read(r);
 
         assertThat(text.getSymbols()).containsExactly(new CharSymbol('X'), new CharSymbol('L'));
     }
 
-    @Test
+    @Test(expected = IllegalSymbolException.class)
     public void whenNotAllowed() throws IOException {
-        Reader r = new StringReader(" =0123456789!Go_RUn!@#$%^&*() ");
+        Reader r = new StringReader("1");
         LatinText text = reader.read(r);
-
-        // GORUN
-        assertThat(text.getSymbols()).containsExactly(new CharSymbol('G'), new CharSymbol('O'), new CharSymbol('R'), new CharSymbol('U'), new CharSymbol('N'));
     }
 }

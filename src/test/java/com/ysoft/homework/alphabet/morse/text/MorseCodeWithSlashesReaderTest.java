@@ -1,33 +1,88 @@
 package com.ysoft.homework.alphabet.morse.text;
 
-import com.ysoft.homework.alphabet.morse.text.symbols.MorseSymbol;
-import com.ysoft.homework.alphabet.spi.text.Text;
-import org.junit.Before;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.io.StringReader;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
-/**
- * Created by admin on 14.12.2015.
- */
+import com.ysoft.homework.alphabet.morse.text.symbols.MorseSymbol;
+import com.ysoft.homework.alphabet.spi.text.Text;
+import com.ysoft.homework.alphabet.spi.text.symbols.IllegalSymbolException;
+
 public class MorseCodeWithSlashesReaderTest {
 
-    @Before
-    public void setUp() throws Exception {
-
+    @Test
+    public void empty_valid() throws IOException {
+        // given
+        String s = "";
+        MorseCodeReader reader = new MorseCodeWithSlashesReader();
+        // when
+        Text<MorseSymbol> morseText = reader.read(new StringReader(s));
+        // then
+        assertThat(morseText.getSymbols()).isEmpty();
     }
 
     @Test
-    public void a() throws IOException {
+    public void singleMorse_valid() throws IOException {
+        // given
+        String s = ".-";
         MorseCodeReader reader = new MorseCodeWithSlashesReader();
-        Reader r = new StringReader(".....-----");
+        // when
+        Text<MorseSymbol> morseText = reader.read(new StringReader(s));
+        // then
+        assertThat(morseText.getSymbols()).containsExactly(new MorseSymbol(".-"));
+    }
 
-        Text<MorseSymbol> read = reader.read(r);
+    @Test(expected = IllegalSymbolException.class)  // then
+    public void notMorseSymbol_invalid() throws IOException {
+        // given
+        String s = "....----";
+        MorseCodeReader reader = new MorseCodeWithSlashesReader();
+        // when
+        Text<MorseSymbol> morseText = reader.read(new StringReader(s));
+    }
 
-        // TODO
+    @Test(expected = IllegalSymbolException.class)  // then
+    public void illegalChar_invalid() throws IOException {
+        // given
+        String s = "A";
+        MorseCodeReader reader = new MorseCodeWithSlashesReader();
+        // when
+        Text<MorseSymbol> morseText = reader.read(new StringReader(s));
+    }
+
+    @Test
+    public void singleSlash_valid() throws IOException {
+        // given
+        String s = "/";
+        MorseCodeReader reader = new MorseCodeWithSlashesReader();
+        // when
+        Text<MorseSymbol> morseText = reader.read(new StringReader(s));
+        // then
+        assertThat(morseText.getSymbols()).isEmpty();
+    }
+
+    @Test
+    public void moreSlashes_valid() throws IOException {
+        // given
+        String s = "///";
+        MorseCodeReader reader = new MorseCodeWithSlashesReader();
+        // when
+        Text<MorseSymbol> morseText = reader.read(new StringReader(s));
+        // then
+        assertThat(morseText.getSymbols()).isEmpty();
+    }
+
+    @Test
+    public void text_valid() throws IOException {
+        // given
+        String s = "//.-/---/-.-.//";
+        MorseCodeReader reader = new MorseCodeWithSlashesReader();
+        // when
+        Text<MorseSymbol> morseText = reader.read(new StringReader(s));
+        // then
+        assertThat(morseText.getSymbols()).containsExactly(new MorseSymbol(".-"), new MorseSymbol("---"), new MorseSymbol("-.-."));
     }
 }

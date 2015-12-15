@@ -28,12 +28,6 @@ public abstract class Text<SYMBOL extends PrintableSymbol> {
         }
     }
 
-    /** Special symbol from current alphabet which serves as a delimiter to separate symbols of current alphabet
-     * null value is used for no special  */
-    public SYMBOL getDelimiter() {
-        return null;
-    }
-
     public Collection<SYMBOL> getSymbols() {
         return ImmutableList.copyOf(symbols);
     }

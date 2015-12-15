@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Objects;
 
+import javax.annotation.concurrent.Immutable;
+
+@Immutable
 public class CharSymbol extends PrintableSymbol {
-    private final char letter;
+    protected final char letter;
 
     public CharSymbol(char letter) {
         this.letter = letter;
@@ -16,7 +19,8 @@ public class CharSymbol extends PrintableSymbol {
         writer.write(letter);
     }
 
-    public char getLetter() {
+    @Override
+    public Character getSymbol() {
         return letter;
     }
 
@@ -35,5 +39,10 @@ public class CharSymbol extends PrintableSymbol {
     @Override
     public int hashCode() {
         return Objects.hash(letter);
+    }
+
+    @Override
+    public String toString() {
+        return Character.toString(letter);
     }
 }
